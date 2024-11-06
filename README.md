@@ -2,7 +2,7 @@ BlackJack - Clément Moreau
 
 Installer les dépendances :
 
-Dans le répertoire du front-end : cd .\BOOTCAMP\bj\BOOTCAMP\FrontEnd\FrontBlackjack\
+Dans le répertoire du front-end : cd \BOOTCAMP-BJ\bj\frontend
 
 - npm install
 
@@ -10,7 +10,7 @@ Dans le répertoire du front-end : cd .\BOOTCAMP\bj\BOOTCAMP\FrontEnd\FrontBlack
 
 Back-end :
 
-Dans le répertoire du back-end : cd .\BOOTCAMP\bj\BOOTCAMP\BlackJackV2\backend\
+Dans le répertoire du back-end : cd .\BOOTCAMP-BJ\bj\backend
 
 - python -m venv .venv
   
@@ -25,10 +25,3 @@ Dans le répertoire du back-end : cd .\BOOTCAMP\bj\BOOTCAMP\BlackJackV2\backend\
 - pip install django-cors-headers
   
 - python manage.py runserver
-
-`Des erreurs ont été faites à la création du projet d'où, le nombre intermédiaire de dossier.`
-
-Les dossiers principaux : 
-
-- FrontBlackjack
-- backend
