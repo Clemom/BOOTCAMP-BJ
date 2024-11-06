@@ -50,58 +50,15 @@ def delete(request, game_id:int):
      delete_game.delete()
      return delete_game
 
-@api.put("/update_game", response=GameSchema)
+@api.put("/update_game/{game_id}")
 def update(request, game_id: int, data: UpdateGame):
     game = Game.objects.get(pk=game_id)
     game.name = data.name
     game.save()
     return game
 
-# class ChoiceSchema(ModelSchema):
-#     class Meta:
-#         model = Choice
-#         fields = [
-#             "id",
-#             "choice_text",
-#             "votes",
-#         ]
+@api.get("/game/{game_id}/players", response=list[PlayerSchema])
+def get_players(request, game_id: int):
+    players = Player.objects.filter(game_id=game_id)
+    return players
 
-# class QuestionSchema(ModelSchema):
-#     class Meta:
-#         model = Question
-#         fields = [
-#         "id",
-#         "question_text",
-#         "pub_date",
-#         ]
-
-# class AddQuestion(Schema):
-#         question_text: str
-#         choice: list [str]
-
-# class UpdateQuestion(Schema):
-#         question_text: str
-#         choice: list [str]
-
-# @api.post("/create_question", response=QuestionSchema)
-# def add(request, question: AddQuestion):
-#     new_question = Question.objects.create(question_text=question.question_text, pub_date=date.today())
-#     for choice_text in question.choice:
-#          Choice.objects.create(question=new_question, choice_text=choice_text, votes=0)
-#     return new_question
-
-# @api.get("/question/{id}", response=QuestionSchema)
-# def get(request, question_id:int):
-#         return Question.objects.get(pk=question_id)
-
-# @api.delete("/delete_question/{id}", response=QuestionSchema)
-# def delete(request, question_id:int):
-#      delete_question = Question.objects.get(pk=question_id)
-#      return delete_question.delete()
-
-# @api.put("/update_question", response=QuestionSchema)
-# def update(request, question_id:int, data: UpdateQuestion):
-#     update_question = Question.objects.get(pk=question_id)
-#     update_question.question_text = data.question_text
-#     return update_question.save()
-    

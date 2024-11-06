@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
     'corsheaders',
-    'polls.apps.PollsConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +127,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# settings.py
+
+NINJA_PAGINATION_CLASS = 'ninja.pagination.LimitOffsetPagination'
+NINJA_PAGINATION_PER_PAGE = 10
+NINJA_PAGINATION_MAX_LIMIT = 100
+NINJA_NUM_PROXIES = None  # Si non nécessaire, mettre à None
+NINJA_DEFAULT_THROTTLE_RATES = {
+    'user': '100/hour',
+    'anon': '10/minute',
+}
+
