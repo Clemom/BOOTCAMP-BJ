@@ -94,3 +94,5 @@ Je n'ai pas réussi à parfaitement organiser le code côté backend en raison d
 Le fait que l'application soit connectée à une base de données est une grande première pour moi. N'ayant jamais travaillé avec Python, un framework backend, ou des API auparavant, je suis fier du projet réalisé.
 
 Si possible, j'aimerais avoir la correction du projet pour comprendre comment les endpoints peuvent être mieux organisés.
+
+Penser à mettre des commentaires plus tôt dans le projet, en mettant des commentaires je viens de comprendre beaucoup + mon back...
