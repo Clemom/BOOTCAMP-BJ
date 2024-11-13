@@ -69,7 +69,7 @@ export default function Home() {
                     ))}
 
                     <button onClick={CreatePlayer}>Ajouter un joueur</button>        
-                    <button onClick={CreateGame}>Create Game</button>
+                    <button onClick={CreateGame}>Créer une partie</button>
                 </div>
             </div>
         </div>
