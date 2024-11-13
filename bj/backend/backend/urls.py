@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from polls.urls import api
 
+#Liste des routes, les routes servent par exemple à accéder aux endpoints
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', api.urls),

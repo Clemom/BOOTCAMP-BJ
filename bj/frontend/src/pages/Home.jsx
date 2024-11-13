@@ -8,6 +8,7 @@ export default function Home() {
     const [players, setPlayers] = useState([{ name: "", id: 1 }]);
     const navigate = useNavigate();
 
+    // Fonction pour créer une partie
     const CreateGame = async () => {
         const filteredPlayers = players.filter(player => player.name.trim() !== "");
 
@@ -25,6 +26,7 @@ export default function Home() {
         }
     };
 
+    // Fonction pour ajouter un joueur à la liste
     const CreatePlayer = () => {
         setPlayers(prevPlayers => [
             ...prevPlayers,
@@ -32,11 +34,13 @@ export default function Home() {
         ]);
     };
 
+    // Fonction pour supprimer un joueur
     const removePlayer = (id) => {
         const updatedPlayers = players.filter(player => player.id !== id);
         setPlayers(updatedPlayers);
     };
 
+    // Fonction pour gérer la modification d'un joueur
     const handlePlayerChange = (id, value) => {
         setPlayers((prevPlayers) =>
             prevPlayers.map((player) =>
@@ -64,7 +68,9 @@ export default function Home() {
                                 value={player.name || ""}
                                 onChange={(e) => handlePlayerChange(player.id, e.target.value)}
                             />
-                            <button className="Delete" onClick={() => removePlayer(player.id)}>X</button>
+                            <button 
+                            className="Delete" 
+                            onClick={() => removePlayer(player.id)}>X</button>
                         </div>
                     ))}
 

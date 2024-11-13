@@ -1,12 +1,12 @@
 import { useCallback } from "react";
 
 function useCreateGame() {
+    // Permet créer une partie avec un nom et une liste de joueurs
     const createGame = async (gameName, players) => {
-        try {
-            const playerNames = players.map(player => player.name);
+            const playerNames = players.map(player => player.name); // Extrait les noms des joueurs
 
             const response = await fetch("http://localhost:8000/api/create_game", {
-                method: "POST",
+                method: "POST", // Envoie une requête POST à l'API
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
@@ -17,39 +17,21 @@ function useCreateGame() {
                 }),
             });
 
-            if (!response.ok) {
-                throw new Error("Erreur lors de la création du jeu");
-            }
-
             const data = await response.json();
-            console.log("Partie créée avec succès :", data);
-            return data.id;
-        } catch (error) {
-            console.error("Erreur lors de la création de la partie :", error);
-            throw error;
-        }
+            return data.id; 
     };
 
+    // Fonction pour récupérer les joueurs d'une partie existante
     const createPlayers = useCallback(async (gameId) => {
-        try {
             const response = await fetch(`http://127.0.0.1:8000/api/game/${gameId}/players`, {
-                method: "GET",
+                method: "GET", // Envoie une requête GET pour récupérer les joueurs
                 headers: {
                     "Content-Type": "application/json",
                 },
             });
 
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-
-            const data = await response.json();
-            console.log("Game details:", data);
+            const data = await response.json(); 
             return data;
-        } catch (error) {
-            console.error("Error fetching game:", error);
-            throw error;
-        }
     }, []);
 
     return { createGame, createPlayers };
