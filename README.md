@@ -84,3 +84,13 @@ BlackJack Roll est une application web qui permet de jouer à un jeu de dés ins
    - Créez une partie en ajoutant un nom et des joueurs.
    - Lancez les dés pour chaque joueur et suivez les scores.
    - Déterminez le ou les gagnants à la fin de la partie.
+  
+   - 
+
+## Conclusion
+
+Je n'ai pas réussi à parfaitement organiser le code côté backend en raison de nombreuses incompréhensions, mais je suis satisfait du résultat final.
+
+Le fait que l'application soit connectée à une base de données est une grande première pour moi. N'ayant jamais travaillé avec Python, un framework backend, ou des API auparavant, je suis fier du projet réalisé.
+
+Si possible, j'aimerais avoir la correction du projet pour comprendre comment les endpoints peuvent être mieux organisés.
