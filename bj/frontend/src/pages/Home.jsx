@@ -5,16 +5,15 @@ import useCreateGame from "../hooks/useCreateGame";
 export default function Home() {
     const { createGame } = useCreateGame();
     const [gameName, setGameName] = useState("");
-    const [players, setPlayers] = useState([""]);                                   
-    const navigate = useNavigate();                                                             
+    const [players, setPlayers] = useState([{ name: "", id: 1 }]);
+    const navigate = useNavigate();
 
     const CreateGame = async () => {
         const filteredPlayers = players.filter(player => player.name.trim() !== "");
 
-    
         if (filteredPlayers.length >= 1) {
             try {
-                const newGameId = createGame(gameName, filteredPlayers);
+                const newGameId = await createGame(gameName, filteredPlayers);
                 if (newGameId) {
                     navigate(`/game/${newGameId}`, { state: { players: filteredPlayers, gameName } });
                 }
@@ -24,19 +23,19 @@ export default function Home() {
         } else {
             alert("Entrez au moins un joueur");
         }
-    };    
+    };
 
     const CreatePlayer = () => {
         setPlayers(prevPlayers => [
             ...prevPlayers,
             { name: "", id: prevPlayers.length + 1 }
         ]);
-    };    
+    };
 
     const removePlayer = (id) => {
         const updatedPlayers = players.filter(player => player.id !== id);
         setPlayers(updatedPlayers);
-    };  
+    };
 
     const handlePlayerChange = (id, value) => {
         setPlayers((prevPlayers) =>
@@ -62,15 +61,13 @@ export default function Home() {
                             <input
                                 type="text"
                                 placeholder={`Joueur ${index + 1}`}
-                                value={player.name || ""} // Une valeur par défaut pour éviter une valeur nul ou undefini
+                                value={player.name || ""}
                                 onChange={(e) => handlePlayerChange(player.id, e.target.value)}
                             />
                             <button className="Delete" onClick={() => removePlayer(player.id)}>X</button>
                         </div>
                     ))}
 
-
-                    
                     <button onClick={CreatePlayer}>Ajouter un joueur</button>        
                     <button onClick={CreateGame}>Create Game</button>
                 </div>
